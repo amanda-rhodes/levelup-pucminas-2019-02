@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
+import uuid from 'uuid';
 
 class App extends Component {
   constructor(props) {
@@ -9,22 +10,22 @@ class App extends Component {
     this.state = {
       tarefas: [
         {
-          id: 1,
+          id: uuid.v4(),
           title: "Ir à academia",
           completed: false,
         },
         {
-          id: 2,
+          id: uuid.v4(),
           title: "Tomar café",
           completed: false,
         },
         {
-          id: 3,
+          id: uuid.v4(),
           title: "Passear com o cachorro",
           completed: false,
         },
         {
-          id: 4,
+          id: uuid.v4(),
           title: "Ir à PUC Minas",
           completed: false,
         }
@@ -56,7 +57,7 @@ class App extends Component {
 
   addTodoNoApp = (title) => {
     const newTodo = {
-      id: 5,
+      id: uuid.v4(),
       title: title,
       completed: false
     }
