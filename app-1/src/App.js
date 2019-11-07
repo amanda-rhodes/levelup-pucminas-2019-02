@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Todo from './components/Todo';
+import AddTodo from './components/AddTodo';
 
 class App extends Component {
   constructor(props) {
@@ -38,27 +39,46 @@ class App extends Component {
           itemTarefa.completed = !itemTarefa.completed;
         }
         return itemTarefa;
-      }) 
+      })
     })
   }
 
   removeTodoNoApp = (id) => {
     this.setState({
-      tarefas: {...this.state.tarefas.filter(
-        tarefa => tarefa.id !== id
-      ) }
+      tarefas: {
+        ...this.state.tarefas.filter(
+          tarefa => tarefa.id !== id
+        )
+      }
+    })
+  }
+
+
+  addTodoNoApp = (title) => {
+    const newTodo = {
+      id: 5,
+      title: title,
+      completed: false
+    }
+    this.setState({
+      tarefas: [...this.state.tarefas, newTodo]
     })
   }
 
   render() {
     return (
       <div>
-        <h3 className="App-header">Arquivo App.js</h3>
-        <Todo 
-          removeTodoNoApp={this.removeTodoNoApp} 
-          tarefas={this.state.tarefas} 
-          markCompletedNoApp={this.markCompletedNoApp} 
-        />
+        <h3 className="App-header">Minhas tarefas</h3>
+        <div className="App-container">
+          <AddTodo
+            addTodo = {this.addTodoNoApp}
+          />
+          <Todo
+            removeTodoNoApp={this.removeTodoNoApp}
+            tarefas={this.state.tarefas}
+            markCompletedNoApp={this.markCompletedNoApp}
+          />
+        </div>
       </div>
     )
   }

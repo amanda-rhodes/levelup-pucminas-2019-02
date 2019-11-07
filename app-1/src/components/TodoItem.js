@@ -7,21 +7,17 @@ export class TodoItem extends Component {
     return {
       textDecoration: this.props.tarefa.completed ? "line-through" : "none"
     }
-    // if (this.props.tarefa.completed) { // o if assim já valida se está verdadeiro ou falso
-    //   return { textDecoration: "line-through" }
-    // } else {
-    //   return { textDecoration: "none"  }
-    // }
   }
 
   btnStyle = () => {
     return {
-      background: "red",
+      background: "rgba(255, 0, 0, 0.8",
       float: "right",
       border: "none",
-      borderRadius: "58%",
+      borderRadius: "5px",
       color: "white",
-      cursor: "pointer"
+      cursor: "pointer",
+      margin: "2px"
     }
   }
 
@@ -29,17 +25,17 @@ export class TodoItem extends Component {
     const { id, title } = this.props.tarefa;
     return (
       <div style={this.changeStyle()}>
-        <h5>
-          <input 
-            type="checkbox" 
+        <h6>
+          <input
+            type="checkbox"
             onChange={this.props.markCompleted.bind(this, id)}
           ></input>
           {title}
-          <button 
+          <button
             style={this.btnStyle()}
-            onClick={this.props.removeTodo.bind(this, id)}
+          // onClick={this.props.removeTodo.bind(this, id)}
           >X</button>
-        </h5>
+        </h6>
       </div>
     )
   }

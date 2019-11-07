@@ -4,6 +4,40 @@
   text-align: center;
 }
 
+.App-container {
+  width: 90vw;
+  height: 50vh;
+  /* background: #6C7A89; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-input {
+  background-color:#FFFFFF;
+  border:solid -1px #A9A9A9;
+  font-size:13px;
+  color:#000000;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  padding: 4px;
+  margin: 2px;
+}
+
+.App-button {
+  background-color:#FFFFFF;
+  border:solid 1px #A9A9A9;
+  font-size:13px;
+  color:#000000;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  padding: 5px;
+  margin: 2px;
+}
+
 body {
   font-family: "Mali", cursive;
   background-color: #282c34;
