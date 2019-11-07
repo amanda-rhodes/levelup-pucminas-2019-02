@@ -14,6 +14,17 @@ export class TodoItem extends Component {
     // }
   }
 
+  btnStyle = () => {
+    return {
+      background: "red",
+      float: "right",
+      border: "none",
+      borderRadius: "58%",
+      color: "white",
+      cursor: "pointer"
+    }
+  }
+
   render() {
     const { id, title } = this.props.tarefa;
     return (
@@ -21,7 +32,8 @@ export class TodoItem extends Component {
         <h5> 
           <input type="checkbox" onChange={this.props.markCompleted.bind(this, id)}>
           </input> 
-          {title} 
+          {title}
+          <button style={this.btnStyle()} >X</button> 
           </h5>
       </div>
     )
