@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import TodoItem from './TodoItem';
 
 export class Todo extends Component {
+  removeTodo = () => {
+    console.log("Teste")
+}
+
   render() {
     const tasks = this.props.tarefas.map(arrayItem => 
-        <TodoItem key={arrayItem.id} tarefa={arrayItem} markCompleted={this.props.markCompletedNoApp} />
+        <TodoItem 
+          key={arrayItem.id} 
+          tarefa={arrayItem} 
+          removeTodo={this.props.removeTodo} 
+          markCompleted={this.props.markCompletedNoApp} 
+        />
       )
     return (
       <div>

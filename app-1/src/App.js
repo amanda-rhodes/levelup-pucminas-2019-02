@@ -42,11 +42,23 @@ class App extends Component {
     })
   }
 
+  removeTodoNoApp = (id) => {
+    this.setState({
+      tarefas: {...this.state.tarefas.filter(
+        tarefa => tarefa.id !== id
+      ) }
+    })
+  }
+
   render() {
     return (
       <div>
         <h3 className="App-header">Arquivo App.js</h3>
-        <Todo tarefas={this.state.tarefas} markCompletedNoApp={this.markCompletedNoApp} />
+        <Todo 
+          removeTodoNoApp={this.removeTodoNoApp} 
+          tarefas={this.state.tarefas} 
+          markCompletedNoApp={this.markCompletedNoApp} 
+        />
       </div>
     )
   }

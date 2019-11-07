@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export class TodoItem extends Component {
 
-  changeStyle = () => { 
+  changeStyle = () => {
     return {
       textDecoration: this.props.tarefa.completed ? "line-through" : "none"
     }
@@ -29,12 +29,17 @@ export class TodoItem extends Component {
     const { id, title } = this.props.tarefa;
     return (
       <div style={this.changeStyle()}>
-        <h5> 
-          <input type="checkbox" onChange={this.props.markCompleted.bind(this, id)}>
-          </input> 
+        <h5>
+          <input 
+            type="checkbox" 
+            onChange={this.props.markCompleted.bind(this, id)}
+          ></input>
           {title}
-          <button style={this.btnStyle()} >X</button> 
-          </h5>
+          <button 
+            style={this.btnStyle()}
+            onClick={this.props.removeTodo.bind(this, id)}
+          >X</button>
+        </h5>
       </div>
     )
   }
