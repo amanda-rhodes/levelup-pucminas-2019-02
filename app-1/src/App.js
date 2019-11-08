@@ -2,36 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
-import About from './components/pages/About'
+import About from './components/pages/About';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tarefas: [
-        {
-          id: uuid.v4(),
-          title: "Ir à academia",
-          completed: false,
-        },
-        {
-          id: uuid.v4(),
-          title: "Tomar café",
-          completed: false,
-        },
-        {
-          id: uuid.v4(),
-          title: "Passear com o cachorro",
-          completed: false,
-        },
-        {
-          id: uuid.v4(),
-          title: "Ir à PUC Minas",
-          completed: false,
-        }
+
       ]
     }
   }
@@ -56,14 +38,21 @@ class App extends Component {
 
 
   addTodoNoApp = (title) => {
-    const newTodo = {
-      id: uuid.v4(),
-      title: title,
-      completed: false
-    }
-    this.setState({
-      tarefas: [...this.state.tarefas, newTodo]
-    })
+    axios.post('https://jsonplaceholder.typicode.com/todos', { title: title, completed: false })
+      .then(resposta => {
+        this.setState({
+          tarefas: [...this.state.tarefas, resposta.data]
+        })
+      });
+
+
+  }
+
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then(resposta => {
+        this.setState({ tarefas: resposta.data })
+      });
   }
 
   render() {
@@ -84,7 +73,7 @@ class App extends Component {
                 />
               </div>
             </React.Fragment>
-          )}/>
+          )} />
           <Route path="/about" component={About} />
         </div>
       </Router>
