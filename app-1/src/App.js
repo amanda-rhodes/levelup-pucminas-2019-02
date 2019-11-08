@@ -3,6 +3,8 @@ import './App.css';
 import Todo from './components/Todo';
 import AddTodo from './components/AddTodo';
 import uuid from 'uuid';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './components/layout/Header'
 
 class App extends Component {
   constructor(props) {
@@ -65,19 +67,21 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h3 className="App-header">Minhas tarefas</h3>
-        <div className="App-container">
-          <AddTodo
-            addTodo={this.addTodoNoApp}
-          />
-          <Todo
-            removeTodoNoApp={this.removeTodoNoApp}
-            tarefas={this.state.tarefas}
-            markCompletedNoApp={this.markCompletedNoApp}
-          />
+      <Router>
+        <div>
+          <Header />
+          <div className="App-container">
+            <AddTodo
+              addTodo={this.addTodoNoApp}
+            />
+            <Todo
+              removeTodoNoApp={this.removeTodoNoApp}
+              tarefas={this.state.tarefas}
+              markCompletedNoApp={this.markCompletedNoApp}
+            />
+          </div>
         </div>
-      </div>
+      </Router>
     )
   }
 }
