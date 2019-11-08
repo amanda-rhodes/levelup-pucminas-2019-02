@@ -33,7 +33,7 @@ export class TodoItem extends Component {
           {title}
           <button
             style={this.btnStyle()}
-          // onClick={this.props.removeTodo.bind(this, id)}
+            onClick={this.props.removeTodo.bind(this, id)}
           >X</button>
         </h6>
       </div>

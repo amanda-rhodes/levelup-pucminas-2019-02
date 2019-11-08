@@ -11,7 +11,7 @@ export class Todo extends Component {
       <TodoItem
         key={arrayItem.id}
         tarefa={arrayItem}
-        removeTodo={this.props.removeTodo}
+        removeTodo={this.props.removeTodoNoApp}
         markCompleted={this.props.markCompletedNoApp}
       />
     )

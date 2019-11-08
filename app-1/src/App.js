@@ -45,12 +45,9 @@ class App extends Component {
   }
 
   removeTodoNoApp = (id) => {
+    const { tarefas } = this.state;
     this.setState({
-      tarefas: {
-        ...this.state.tarefas.filter(
-          tarefa => tarefa.id !== id
-        )
-      }
+      tarefas: tarefas.filter(task => task.id !== id)
     })
   }
 
@@ -72,7 +69,7 @@ class App extends Component {
         <h3 className="App-header">Minhas tarefas</h3>
         <div className="App-container">
           <AddTodo
-            addTodo = {this.addTodoNoApp}
+            addTodo={this.addTodoNoApp}
           />
           <Todo
             removeTodoNoApp={this.removeTodoNoApp}
