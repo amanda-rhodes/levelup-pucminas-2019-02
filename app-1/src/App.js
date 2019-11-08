@@ -30,10 +30,15 @@ class App extends Component {
   }
 
   removeTodoNoApp = (id) => {
-    const { tarefas } = this.state;
-    this.setState({
-      tarefas: tarefas.filter(task => task.id !== id)
-    })
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(resposta => {
+        console.log(resposta);
+        this.setState({
+          tarefas: [...this.state.tarefas.filter(
+            tarefa => tarefa.id !== id
+          )]
+        })
+      })
   }
 
 
